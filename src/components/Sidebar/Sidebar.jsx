@@ -4,9 +4,11 @@ import { Divider, Menu } from "antd";
 import ListGroup from "./ListGroup";
 import Profile from "./Profile";
 import { AddWatchlistModal } from "../watchlist/AddWatchlistModal";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
   const menu_items = [
     {
       key: "home",
@@ -14,10 +16,19 @@ const Sidebar = () => {
       label: "Home",
     },
   ];
+  function onMenuClick({ key }) {
+    // here key is anyway "HOME", since we dont have any other menu items.
+    // we can navigate to home.
+    navigate(`/`);
+  }
   return (
     <div className="flex flex-col border-r-2 gap-2">
       <h1>Watchlists</h1>
-      <Menu defaultSelectedKeys={["home"]} items={menu_items} />
+      <Menu
+        defaultSelectedKeys={["home"]}
+        items={menu_items}
+        onClick={onMenuClick}
+      />
       <Divider />
       <h1>My Lists</h1>
       <ListGroup />

@@ -7,6 +7,7 @@ import { addWatchlist } from "../../store/slices/watchlistSlice";
 export const AddWatchlistModal = (props) => {
   const { open, setOpen } = props;
   const [value, setValue] = useState("");
+  const [description, setDescription] = useState("");
   const showModal = () => setOpen(true);
   const handleCancel = () => setOpen(false);
 
@@ -15,7 +16,9 @@ export const AddWatchlistModal = (props) => {
 
   const onAddWatchlist = () =>
     // add watchlist to the store, pass userId and the title for the watchlist.
-    dispatch(addWatchlist({ title: value, userId: currentUser.id }));
+    dispatch(
+      addWatchlist({ title: value, userId: currentUser.id, description })
+    );
 
   const handleOk = () => {
     onAddWatchlist();
@@ -38,12 +41,19 @@ export const AddWatchlistModal = (props) => {
             <OkBtn />
           </>
         )}>
-        <Input
-          placeholder="Enter watchlist title"
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          required
-        />
+        <div className="flex flex-col gap-2">
+          <Input
+            placeholder="Enter watchlist title"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            required
+          />
+          <Input
+            placeholder="Enter watchlist description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </div>
       </Modal>
     </>
   );

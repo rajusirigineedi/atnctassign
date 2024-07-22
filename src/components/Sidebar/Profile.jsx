@@ -17,20 +17,24 @@ const Profile = () => {
   };
 
   return (
-    <div className="flex gap-2 items-center justify-between border-2 rounded-md p-2">
-      <div className="flex gap-2 items-center">
-        <Avatar
-          style={{ backgroundColor: "#87d068" }}
-          icon={<UserOutlined />}
-        />
-        <h2>{currentUser?.name}</h2>
-      </div>
-      <Popover
-        placement="top"
-        content={<Button onClick={handleLogout}>Logout</Button>}>
+    <Popover
+      placement="top"
+      content={
+        <Button type="primary" onClick={handleLogout}>
+          Logout
+        </Button>
+      }>
+      <div className="flex gap-2 items-center justify-between border-2 rounded-md p-2 cursor-pointer">
+        <div className="flex gap-2 items-center">
+          <Avatar
+            style={{ backgroundColor: "#87d068" }}
+            icon={<UserOutlined />}
+          />
+          <h2>{currentUser?.name}</h2>
+        </div>
         <MoreOutlined />
-      </Popover>
-    </div>
+      </div>
+    </Popover>
   );
 };
 
