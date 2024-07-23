@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BookOutlined, CheckOutlined, BookFilled } from "@ant-design/icons";
+import { BookOutlined, BookFilled } from "@ant-design/icons";
 import { Button, Popover } from "antd";
 import useWatchlists from "../../hooks/useWatchlists";
 import { useDispatch } from "react-redux";
@@ -13,6 +13,11 @@ const SaveTo = (props) => {
   const { movie } = props;
   const dispatch = useDispatch();
   const watchlists = useWatchlists();
+  // find if current movie is in any of the list of watchlists
+  const isMovieInWatchlist = watchlists.some((list) =>
+    list.movies.some((m) => m.imdbID === movie.imdbID)
+  );
+
   const { slug } = useParams();
   const [open, setOpen] = useState(false);
   const hide = () => {
@@ -76,7 +81,7 @@ const SaveTo = (props) => {
           trigger="click"
           open={open}
           onOpenChange={handleOpenChange}>
-          <BookOutlined />
+          {isMovieInWatchlist ? <BookFilled /> : <BookOutlined />}
         </Popover>
       )}
     </div>

@@ -25,10 +25,10 @@ const authSlice = createSlice({
         toast.error(errorMsg);
       }
     },
+
     loginUser: (state, action) => {
       // action.payload has user entered email. check it in the users array, if user found, set it to currentUser
       const user = state.users.find((user) => user.email === action.payload);
-      // TODO: can implement a warning / error flow as well. [ out of scope for this assignment ]
       if (!user) {
         const errorMsg = "User not exist with current email!. Try signing up.";
         toast.error(errorMsg);
@@ -37,6 +37,7 @@ const authSlice = createSlice({
       state.currentUser = user;
       toast.success("User logged in successfully!");
     },
+
     logoutUser: (state) => {
       // clear the currentUser from the state to logout
       state.currentUser = null;

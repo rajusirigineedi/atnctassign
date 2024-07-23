@@ -6,6 +6,14 @@ import Watchlist from "./components/dashboard/Watchlist";
 import MainLayout from "./components/layouts/MainLayout";
 import MovieDetails from "./components/movies/MovieDetails";
 
+/** Main App */
+/** Route setup */
+/** Home & search - /
+ * Watchlist - /watchlist/:slug
+ * MovieDetails - /movie/:movieId
+ * SignIn - /signin
+ * SignUp - /signup
+ */
 function App() {
   return (
     <Routes>

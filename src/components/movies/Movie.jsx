@@ -7,7 +7,6 @@ const Movie = (props) => {
   const { movie } = props;
   const navigate = useNavigate();
   const { slug } = useParams();
-
   const onPosterClick = () => navigate(`/movie/${movie.imdbID}`);
 
   return (

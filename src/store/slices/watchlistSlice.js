@@ -1,26 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
 import toast from "react-hot-toast";
 import { v4 as uuid } from "uuid";
+
+// Initial state of the watchlist slice.
 const initialState = {
   watchlists: [],
 };
 
-// Format of watchlist object:
+// ----------- Format of watchlist object: -----------
 // const tempWatchlist = [
 //   {
-//     id: uuid(),
-//     userId: "1",
+//     id: watchlistId,
+//     userId: userId,
 //     title: "Tom cruise movies watchlist",
 //     description: "A list of all the movies of Tom Cruise",
 //     movies: [
 //       {
-//         id: uuid(),
+//         id: imdbID,
 //         title: "Mission Impossible",
 //         rating: 7.5,
 //         watched: false,
 //       },
 //       {
-//         id: uuid(),
+//         id: imdbID,
 //         title: "Top Gun",
 //         rating: 8.0,
 //         watched: true,
@@ -28,6 +30,7 @@ const initialState = {
 //     ],
 //   },
 // ];
+// ----------------------------------------------------------
 
 const watchlistSlice = createSlice({
   name: "watchlist",
@@ -40,6 +43,7 @@ const watchlistSlice = createSlice({
       state.watchlists.push(newWatchlist);
       toast.success("Watchlist added successfully!");
     },
+
     // removes an existing watchlist for the user.
     removeWatchlist: (state, action) => {
       // action.payload has the id of the watchlist
@@ -48,6 +52,7 @@ const watchlistSlice = createSlice({
       );
       toast.success("Watchlist removed successfully!");
     },
+
     editWatchlistTitleAndDescription: (state, action) => {
       // action.payload has the id of the watchlist and the new title and description
       const { watchlistId, title, description } = action.payload;
@@ -58,6 +63,7 @@ const watchlistSlice = createSlice({
       watchlist.description = description;
       toast.success("Watchlist updated successfully!");
     },
+
     // adds a movie to a watchlist for the user.
     addMovieToWatchlist: (state, action) => {
       // action.payload has the id of the watchlist and the movie object
@@ -73,6 +79,7 @@ const watchlistSlice = createSlice({
       watchlist.movies.push(movie);
       toast.success("Movie added to watchlist successfully!");
     },
+
     // removes a movie from the watchlist.
     removeMovieFromWatchlist: (state, action) => {
       // action.payload has the id of the watchlist and the movie id
@@ -80,14 +87,17 @@ const watchlistSlice = createSlice({
       const watchlist = state.watchlists.find(
         (watchlist) => watchlist.id === watchlistId
       );
+      // filter out the movie from the watchlist.
       watchlist.movies = watchlist.movies.filter(
         (movie) => movie.imdbID !== movieId
       );
       toast.success("Movie removed from watchlist successfully");
     },
+
     // marks a movie as watched/ unwatched in all watchlists of current user.
     markMovieAsWatchedOrUnwatched: (state, action) => {
       const { userId, movieId, watched } = action.payload;
+      // filter all the watchlists of the current user and mark the movie as watched/unwatched.
       state.watchlists
         .filter((w) => w.userId === userId)
         .forEach((watchlist) => {

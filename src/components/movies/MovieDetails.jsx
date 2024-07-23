@@ -29,6 +29,7 @@ const MovieDetails = () => {
       <div>
         <img src={details.Poster} alt={details.Title} />
         <h1>{details.Title}</h1>
+        <h1>{details.Year}</h1>
         <p>{details.Plot}</p>
         <p>Rating: {details.imdbRating}</p>
       </div>
