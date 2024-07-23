@@ -23,6 +23,7 @@ export const AddWatchlistModal = (props) => {
     );
 
   const handleOk = () => {
+    // if the value is empty, show an error toast
     if (value.length === 0)
       return toast.error("Please enter a title for the watchlist");
     onAddWatchlist();

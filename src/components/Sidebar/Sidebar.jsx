@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import { RiMenuFold2Line } from "react-icons/ri";
 import { IoMdCloseCircle } from "react-icons/io";
 
-const { Search } = Input;
 const Sidebar = () => {
   const [open, setOpen] = useState(false);
   const [showMenu, setShowMenu] = useState(false);

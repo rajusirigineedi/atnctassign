@@ -7,6 +7,7 @@ import { EditOutlined } from "@ant-design/icons";
 
 import { Button, Input } from "antd";
 import { editWatchlistTitleAndDescription } from "../../store/slices/watchlistSlice";
+import toast from "react-hot-toast";
 
 const Watchlist = () => {
   const { slug } = useParams();
@@ -24,6 +25,7 @@ const Watchlist = () => {
   }, [activeWatchlist]);
 
   const updateWatchlistMeta = () => {
+    if (title.length === 0) return toast.error("Title cannot be empty");
     dispatch(
       editWatchlistTitleAndDescription({
         watchlistId: slug,
