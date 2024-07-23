@@ -15,7 +15,7 @@ const MoviesList = (props) => {
     return <Empty description="No movies in this watchlist. Search and Add" />;
 
   return (
-    <div className="flex flex-wrap gap-4 h-[70vh] overflow-scroll">
+    <div className="flex flex-wrap gap-4 h-[70vh] pb-14 overflow-scroll">
       {movies.map((movie) => (
         <Movie key={movie.imdbID} movie={movie} />
       ))}

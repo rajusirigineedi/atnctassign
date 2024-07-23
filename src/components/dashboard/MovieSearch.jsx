@@ -21,7 +21,7 @@ const MovieSearch = () => {
   };
 
   return (
-    <div className="flex flex-col gap-7 h-full overflow-y-scroll">
+    <div className="flex flex-col gap-7 h-full">
       <div className="border border-primary p-5 rounded-md flex flex-col gap-5">
         <p className="text-3xl font-medium">
           Welcome to <span className="text-primary">Watchlists</span>

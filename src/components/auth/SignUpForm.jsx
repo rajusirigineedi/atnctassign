@@ -28,34 +28,73 @@ const SignUpForm = () => {
   const routeToSignInPage = () => navigate("/signin");
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="email">Email:</label>
-      <br />
-      {/* Update the email state variable every time the user types in the input field */}
-      <Input
-        type="email"
-        id="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Enter your email"
-        required
-      />
-      <Input
-        type="text"
-        id="name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Enter your name"
-        required
-      />
-      <br />
-      <div className="flex gap-2">
-        <Button type="primary" htmlType="submit">
-          Sign Up
-        </Button>
-        <Button onClick={routeToSignInPage}>Login</Button>
+    <div className="grid grid-cols-2 h-screen">
+      <div className="overflow-hidden">
+        <img
+          src="https://www.pcworld.com/wp-content/uploads/2024/06/Netflix-Hintergrund.jpg?resize=1024%2C576&quality=50&strip=all"
+          className="h-full w-full object-cover blur-sm bg-black"
+        />
       </div>
-    </form>
+      <div className="shadow-2xl px-[5%] flex flex-col  justify-center">
+        <p className="text-3xl font-medium">
+          Welcome to <span className="text-primary">Watchlists</span>
+        </p>
+        <p className="text-lg font-medium text-[#b6b6b6] mb-7">
+          Register your account
+        </p>
+
+        <form onSubmit={handleSubmit} className="w-1/2 min-w-[300px]">
+          <label
+            htmlFor="email"
+            className="font-medium text-[#363636] text-lg mb-2"
+          >
+            Email
+          </label>
+          <br />
+          {/* Update the email state variable every time the user types in the input field */}
+          <Input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your email"
+            required
+            className="py-3"
+          />
+          <label
+            htmlFor="name"
+            className="font-medium text-[#363636] text-lg mb-2"
+          >
+            Name
+          </label>
+          <Input
+            type="text"
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Enter your name"
+            required
+            className="py-3"
+          />
+          <br />
+          <div className="flex gap-2">
+            <Button
+              type="primary"
+              className="flex-1 mt-5 h-10"
+              htmlType="submit"
+            >
+              Sign Up
+            </Button>
+          </div>
+          <div className="flex flex-col gap-2 mt-5 w-1/2 min-w-[300px]">
+            <p>Already have an account? </p>
+            <Button onClick={routeToSignInPage} className="h-10">
+              Sign In
+            </Button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 };
 
