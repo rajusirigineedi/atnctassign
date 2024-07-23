@@ -3,6 +3,8 @@ import { Button, Input, Modal, Space } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { addWatchlist } from "../../store/slices/watchlistSlice";
+import { FcBookmark } from "react-icons/fc";
+import toast from "react-hot-toast";
 
 export const AddWatchlistModal = (props) => {
   const { open, setOpen } = props;
@@ -21,14 +23,19 @@ export const AddWatchlistModal = (props) => {
     );
 
   const handleOk = () => {
+    if (value.length === 0)
+      return toast.error("Please enter a title for the watchlist");
     onAddWatchlist();
     setOpen(false);
   };
 
   return (
     <>
-      <Button onClick={showModal} icon={<PlusOutlined />} className="w-full flex items-center justify-start mt-5 py-5">
-        Add Watchlist
+      <Button
+        onClick={showModal}
+        icon={<PlusOutlined />}
+        className="w-full flex items-center justify-start mt-5 py-5">
+        <FcBookmark /> Add Watchlist
       </Button>
       <Modal
         open={open}

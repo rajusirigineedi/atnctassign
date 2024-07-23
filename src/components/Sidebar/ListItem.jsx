@@ -11,6 +11,8 @@ const ListItem = (props) => {
   const { slug } = useParams();
 
   const openWatchlist = () => navigate(`/watchlist/${id}`);
+  const titleWithEllipsis =
+    title.length > 20 ? title.slice(0, 20) + "..." : title;
 
   const onDeleteClick = (e) => {
     e.stopPropagation();
@@ -19,12 +21,16 @@ const ListItem = (props) => {
 
   return (
     <div
-      className={`flex gap-2 py-2 px-2 cursor-pointer border rounded-md ${
-        slug === id ? "bg-red-200" : ""
+      className={`flex gap-2 py-2 px-2 cursor-pointer border items-center justify-between rounded-md ${
+        slug === id ? "bg-red-100 border-red-400" : ""
       }`}
       onClick={openWatchlist}>
-      <p className="h-4 w-4 bg-black text-white">{title.slice(0, 1)}</p>
-      <p>{title}</p>
+      <div className="flex gap-2 items-center">
+        <p className="h-6 w-6 bg-black rounded-md text-white grid place-items-center">
+          {title.slice(0, 1)}
+        </p>
+        <span>{titleWithEllipsis}</span>
+      </div>
       <DeleteOutlined onClick={onDeleteClick} />
     </div>
   );

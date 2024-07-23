@@ -3,6 +3,9 @@ import { Input, Space } from "antd";
 import MoviesList from "../movies/MoviesList";
 import { getMovies } from "../../services/getMovies";
 import { BookOutlined, CheckOutlined } from "@ant-design/icons";
+import { BsBookmarkPlus, BsBookmarkPlusFill } from "react-icons/bs";
+import { FaCheck } from "react-icons/fa";
+
 const { Search } = Input;
 
 const MovieSearch = () => {
@@ -20,11 +23,15 @@ const MovieSearch = () => {
   return (
     <div className="flex flex-col gap-7 h-full overflow-y-scroll">
       <div className="border border-primary p-5 rounded-md flex flex-col gap-5">
-        <p className="text-3xl font-medium">Welcome to <span className="text-primary">Watchlists</span></p>
+        <p className="text-3xl font-medium">
+          Welcome to <span className="text-primary">Watchlists</span>
+        </p>
         <p>
-          Browse movies, add them to watchlists and share them with friends.<br/>
-          Just click the <BookOutlined /> to add a movie, the poster to see
-          more, or <CheckOutlined /> to mark the movie as watched
+          Browse movies, add them to watchlists and share them with friends.
+          <br />
+          Just click the <BsBookmarkPlus className="inline" /> to add a movie,
+          the poster to see more, or <FaCheck className="inline" /> to mark the
+          movie as watched
         </p>
       </div>
       <Search

@@ -19,15 +19,14 @@ const Profile = () => {
   return (
     <Popover
       placement="top"
-      style={{alignSelf:"end"}}
+      style={{ alignSelf: "end" }}
       content={
-        <Button type="primary" onClick={handleLogout}>
+        <Button type="primary" className="w-44" onClick={handleLogout}>
           Logout
         </Button>
       }>
       <div className="flex gap-2 items-center justify-between border-2 rounded-md p-2 cursor-pointer justify-self-end">
         <div className="flex gap-2 items-center">
-          
           <Avatar
             style={{ backgroundColor: "#87d068" }}
             icon={<UserOutlined />}

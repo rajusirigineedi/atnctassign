@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { act, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import MoviesList from "../movies/MoviesList";
@@ -17,6 +17,12 @@ const Watchlist = () => {
   const [title, setTitle] = useState(activeWatchlist.title);
   const [description, setDescription] = useState(activeWatchlist.description);
 
+  useEffect(() => {
+    if (!activeWatchlist) return;
+    setTitle(activeWatchlist.title);
+    setDescription(activeWatchlist.description);
+  }, [activeWatchlist]);
+
   const updateWatchlistMeta = () => {
     dispatch(
       editWatchlistTitleAndDescription({
@@ -27,10 +33,14 @@ const Watchlist = () => {
     );
     setEdit(false);
   };
+
   return (
     <div>
       {edit ? (
-        <div>
+        <div className="flex flex-col gap-2 mb-8">
+          <h1 className="text-2xl mb-2 text-red-400">
+            Edit Watchlist name & description
+          </h1>
           <Input
             type="text"
             placeholder="Title"
@@ -51,15 +61,15 @@ const Watchlist = () => {
         </div>
       ) : (
         <div>
-          <div className="flex gap-2">
-            <h1>{activeWatchlist.title}</h1>
+          <div className="flex gap-10 mb-4">
+            <h1 className="text-3xl font-medium">{activeWatchlist.title}</h1>
             <Button
               type="primary"
               icon={<EditOutlined />}
               onClick={() => setEdit(true)}></Button>
           </div>
-          <p>About the watchlist</p>
-          <h2>
+          <p className="text-gray-400">About the watchlist</p>
+          <h2 className="mb-8 text-lg">
             {activeWatchlist.description ??
               "Grab a cup of coffee and enjoy the movies"}
           </h2>

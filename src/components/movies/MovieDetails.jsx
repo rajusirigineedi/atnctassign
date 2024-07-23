@@ -24,9 +24,9 @@ const MovieDetails = () => {
 
   return (
     <div className="relative">
-      MovieDetails
       {details && <SaveTo movie={details} />}
-      <div>
+      <div className="pt-10">
+        MovieDetails
         <img src={details.Poster} alt={details.Title} />
         <h1>{details.Title}</h1>
         <h1>{details.Year}</h1>
