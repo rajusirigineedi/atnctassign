@@ -1,12 +1,13 @@
+import { MoreOutlined, UserOutlined } from "@ant-design/icons";
 import { Avatar, Button, Popover } from "antd";
-import React, { useEffect } from "react";
-import { UserOutlined, MoreOutlined } from "@ant-design/icons";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutUser } from "../../store/slices/authSlice";
 import { useNavigate } from "react-router-dom";
+import { logoutUser } from "../../store/slices/authSlice";
 
 const Profile = () => {
   const dispatch = useDispatch();
+  // get the current logged in user
   const currentUser = useSelector((state) => state.auth.currentUser);
   const navigate = useNavigate();
 

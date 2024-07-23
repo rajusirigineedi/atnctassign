@@ -1,15 +1,17 @@
-import React, { useState } from "react";
 import { HomeOutlined } from "@ant-design/icons";
-import { Divider, Menu, Input } from "antd";
+import { Divider, Menu } from "antd";
+import React, { useState } from "react";
+import { IoMdCloseCircle } from "react-icons/io";
+import { RiMenuFold2Line } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
+import { AddWatchlistModal } from "../watchlist/AddWatchlistModal";
 import ListGroup from "./ListGroup";
 import Profile from "./Profile";
-import { AddWatchlistModal } from "../watchlist/AddWatchlistModal";
-import { useNavigate } from "react-router-dom";
-import { RiMenuFold2Line } from "react-icons/ri";
-import { IoMdCloseCircle } from "react-icons/io";
 
 const Sidebar = () => {
+  // state to control the visibility of the modal
   const [open, setOpen] = useState(false);
+  // state to control the visibility of the sidebar
   const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
   const menu_items = [
@@ -25,6 +27,7 @@ const Sidebar = () => {
     navigate(`/`);
   }
 
+  // if the sidebar is hidden, show the menu icon ( for mobile devices )
   if (showMenu)
     return (
       <div

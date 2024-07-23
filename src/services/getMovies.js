@@ -2,7 +2,8 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 // Embedding the key here for simplicity. In a real-world application, we should use environment variables.
-const API_KEY = "4a3b711b";
+const API_KEY = "4a3b711b"; // THIS SHOULD BE IN THE ENV. BUT FOR THE SAKE OF ASSESSMENT, I'M LEAVING IT HERE.
+// usually accessed from process.env.REACT_APP_OMDB_API_KEY.
 
 /**
  * Asynchronous function to fetch movies from the OMDB API.

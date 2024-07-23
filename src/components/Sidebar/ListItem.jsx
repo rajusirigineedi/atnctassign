@@ -1,19 +1,23 @@
-import React from "react";
 import { DeleteOutlined } from "@ant-design/icons";
-import { useDispatch, useSelector } from "react-redux";
-import { removeWatchlist } from "../../store/slices/watchlistSlice";
+import React from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import { removeWatchlist } from "../../store/slices/watchlistSlice";
 
 const ListItem = (props) => {
   const { title, id } = props;
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  // get the slug from the URL
   const { slug } = useParams();
 
+  // function to open the watchlist
   const openWatchlist = () => navigate(`/watchlist/${id}`);
+  // add ellipsis to the title if it is longer than 20 characters
   const titleWithEllipsis =
     title.length > 20 ? title.slice(0, 20) + "..." : title;
 
+  // function to delete the watchlist
   const onDeleteClick = (e) => {
     e.stopPropagation();
     dispatch(removeWatchlist(id));

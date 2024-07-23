@@ -1,22 +1,26 @@
+import { Input } from "antd";
 import React, { useState } from "react";
-import { Input, Space } from "antd";
-import MoviesList from "../movies/MoviesList";
-import { getMovies } from "../../services/getMovies";
-import { BookOutlined, CheckOutlined } from "@ant-design/icons";
-import { BsBookmarkPlus, BsBookmarkPlusFill } from "react-icons/bs";
+import { BsBookmarkPlus } from "react-icons/bs";
 import { FaCheck } from "react-icons/fa";
+import { getMovies } from "../../services/getMovies";
+import MoviesList from "../movies/MoviesList";
 
 const { Search } = Input;
 
 const MovieSearch = () => {
+  // State to store movies
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
+  // State to store search query
   const [search, setSearch] = useState("");
 
+  // Function to search movies
   const onSearch = async (value) => {
     setLoading(true);
+    // Call the getMovies function from services/getMovies.js
     const response = await getMovies(value);
     setMovies(response);
+    // Set loading to false
     setLoading(false);
   };
 

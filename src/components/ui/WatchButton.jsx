@@ -1,20 +1,22 @@
-import { CheckOutlined } from "@ant-design/icons";
 import React from "react";
+import { FaCheck } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { markMovieAsWatchedOrUnwatched } from "../../store/slices/watchlistSlice";
-import { FaCheck } from "react-icons/fa";
 
 const WatchButton = (props) => {
   const { movie } = props;
   const dispatch = useDispatch();
+  // get the current user from the store
   const user = useSelector((state) => state.auth.currentUser);
 
+  // function to toggle the movie as watched or unwatched
   const toggleMovieWatch = () => {
+    // dispatch the action to mark the movie as watched or unwatched
     dispatch(
       markMovieAsWatchedOrUnwatched({
         userId: user.id,
         movieId: movie.imdbID,
-        watched: !movie.watched,
+        watched: !movie.watched, // toggle the watched status
       })
     );
   };

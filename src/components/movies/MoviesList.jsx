@@ -1,16 +1,19 @@
+import { Empty, Skeleton } from "antd";
 import React from "react";
 import Movie from "./Movie";
-import { LoaderIcon } from "react-hot-toast";
-import { Empty, Skeleton } from "antd";
 
 const MoviesList = (props) => {
+  // isSearch is a boolean that determines if the movies are search results or watchlist movies.
   const { movies, isSearch, loading } = props;
 
+  // If the movies are loading, show a loader
   if (loading) return <Skeleton active />;
 
+  // If no movies are found, show an empty state
   if (isSearch && movies.length === 0)
     return <Empty description="No movies found for this search" />;
 
+  // If no movies are found in the watchlist, show an empty state
   if (!isSearch && movies.length === 0)
     return <Empty description="No movies in this watchlist. Search and Add" />;
 

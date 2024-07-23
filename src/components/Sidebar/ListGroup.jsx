@@ -1,8 +1,9 @@
 import React from "react";
-import ListItem from "./ListItem";
 import useWatchlists from "../../hooks/useWatchlists";
+import ListItem from "./ListItem";
 
 const ListGroup = () => {
+  // get all watchlists of the current user
   const watchlists = useWatchlists();
   return (
     <div className="flex flex-col gap-2">

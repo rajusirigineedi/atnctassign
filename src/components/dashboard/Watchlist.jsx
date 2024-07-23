@@ -1,31 +1,37 @@
-import React, { act, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import MoviesList from "../movies/MoviesList";
-import useWatchlists from "../../hooks/useWatchlists";
 import { EditOutlined } from "@ant-design/icons";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import useWatchlists from "../../hooks/useWatchlists";
+import MoviesList from "../movies/MoviesList";
 
 import { Button, Input } from "antd";
-import { editWatchlistTitleAndDescription } from "../../store/slices/watchlistSlice";
 import toast from "react-hot-toast";
+import { editWatchlistTitleAndDescription } from "../../store/slices/watchlistSlice";
 
 const Watchlist = () => {
   const { slug } = useParams();
+  // get all watchlists of current logged in user
   const watchlists = useWatchlists();
+  // find the watchlist with the slug from the URL
   const activeWatchlist = watchlists.find((wl) => wl.id === slug);
   const dispatch = useDispatch();
   const [edit, setEdit] = useState(false);
   const [title, setTitle] = useState(activeWatchlist.title);
   const [description, setDescription] = useState(activeWatchlist.description);
 
+  // update the title and description when the activeWatchlist changes
   useEffect(() => {
     if (!activeWatchlist) return;
     setTitle(activeWatchlist.title);
     setDescription(activeWatchlist.description);
   }, [activeWatchlist]);
 
+  // function to update the watchlist title and description
   const updateWatchlistMeta = () => {
+    // if the title is empty, show an error toast
     if (title.length === 0) return toast.error("Title cannot be empty");
+    // dispatch the action to update the watchlist title and description
     dispatch(
       editWatchlistTitleAndDescription({
         watchlistId: slug,
@@ -33,6 +39,7 @@ const Watchlist = () => {
         description,
       })
     );
+    // set the edit mode to false
     setEdit(false);
   };
 
