@@ -11,7 +11,7 @@ const Movie = (props) => {
   const onPosterClick = () => navigate(`/movie/${movie.imdbID}`);
 
   return (
-    <div className="w-36 h-56 object-cover relative" onClick={onPosterClick}>
+    <div className="w-36 h-56 object-cover relative rounded-md" onClick={onPosterClick}>
       <img
         src={movie.Poster}
         alt={movie.Title}

@@ -14,9 +14,11 @@ const MainLayout = () => {
   }, [currentUser]);
 
   return (
-    <div className="flex">
+    <div className="grid grid-cols-12 h-screen overflow-hidden">
       <Sidebar />
+      <div className="col-start-4 col-span-full pt-5 mb-[5%] pr-[5%]">
       <Outlet />
+      </div>
     </div>
   );
 };

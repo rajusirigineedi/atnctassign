@@ -27,7 +27,7 @@ export const AddWatchlistModal = (props) => {
 
   return (
     <>
-      <Button onClick={showModal} icon={<PlusOutlined />}>
+      <Button onClick={showModal} icon={<PlusOutlined />} className="w-full flex items-center justify-start mt-5 py-5">
         Add Watchlist
       </Button>
       <Modal

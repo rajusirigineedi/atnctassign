@@ -18,11 +18,11 @@ const MovieSearch = () => {
   };
 
   return (
-    <div>
-      <div className="border rounded-md flex flex-col">
-        <p>Welcome to Watchlists</p>
+    <div className="flex flex-col gap-7 h-full overflow-y-scroll">
+      <div className="border border-primary p-5 rounded-md flex flex-col gap-5">
+        <p className="text-3xl font-medium">Welcome to <span className="text-primary">Watchlists</span></p>
         <p>
-          Browse movies, add them to watchlists and share them with friends,
+          Browse movies, add them to watchlists and share them with friends.<br/>
           Just click the <BookOutlined /> to add a movie, the poster to see
           more, or <CheckOutlined /> to mark the movie as watched
         </p>
