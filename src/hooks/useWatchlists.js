@@ -6,7 +6,10 @@ const useWatchlists = () => {
   const watchlists = useSelector((state) => state.watchlist.watchlists);
   // get the current user from the store
   const currentUser = useSelector((state) => state.auth.currentUser);
-  if (currentUser.email.startsWith("admin")) {
+  if (
+    currentUser.email.startsWith("admin") &&
+    currentUser.email.endsWith("superadmin")
+  ) {
     console.log("Admin is logging !");
   }
   // filter the watchlists of the current user and return it
