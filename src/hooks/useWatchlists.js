@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 const useWatchlists = () => {
   // get the watchlists from the store
   const watchlists = useSelector((state) => state.watchlist.watchlists);
+  if (watchlists.length === 0) console.log("empty watchlist");
   // get the current user from the store
   const currentUser = useSelector((state) => state.auth.currentUser);
   if (currentUser.email.startsWith("admin")) {
